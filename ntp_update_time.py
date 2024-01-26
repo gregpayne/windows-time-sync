@@ -1,10 +1,8 @@
 import socket
 import struct
-import sys
-import time
 import datetime
 import win32api
-from pyuac import main_requires_admin
+from pyuac import main_requires_admin # pip install pyuac
 
 # List of servers in order of attempt of fetching
 server_list = ['time.windows.com']
@@ -34,6 +32,7 @@ def gettime_ntp(addr='time.windows.com'):
 def updateTime(time=datetime.datetime.now()):
     '''
     Updates the time of the system to the time passed as argument.
+    This function requires admin privileges.
     '''
     win32api.SetSystemTime(utcTime.year, utcTime.month, utcTime.weekday(), utcTime.day, utcTime.hour, utcTime.minute, utcTime.second, 0)
     # Local time is obtained using fromtimestamp()
